@@ -22,22 +22,22 @@ print("\nTesting Data Size : ",len(X_test))
 # Linear Regression Model
 model = LinearRegression()
 model.fit(X_train,y_train)
-print("\nLinear Regression Model Trained Successfully")
+print("\nModel Trained Successfully")
 
 y_pred = model.predict(X_test)
-print("\nActual Price (Linear Regression Evaluation)")
+print("\nActual Price : ")
 print(y_test.values)
-print("\nPredicted Price (Linear Regression Evaluation)")
+print("\nPredicted Price : ")
 print(y_pred)
 
 mse = mean_squared_error(y_test,y_pred)
 r2 = r2_score(y_test,y_pred)
-print("\nLinear Regression Model Evaluation : ")
+print("\nModel Evaluation : ")
 print("\nMean Squared Error : ",mse)
 print("\nR2 Score : ",r2)
 
 # Step 9: Take input from the user for Linear Regression
-print("\n--- Linear Regression Prediction ---")
+print("\n--- Taking the input for prediction ---")
 SqFt_lr = float(input("\nEnter the House Size in terms of SqFt: "))
 Bedrooms_lr = int(input("Enter the Number of Bedrooms: "))
 Bathrooms_lr = int(input("Enter the Number of Bathrooms: "))
@@ -60,6 +60,6 @@ new_data_lr = pd.DataFrame({
 predicted_price_lr = model.predict(new_data_lr)
 
 # Step 12: Print the result for Linear Regression
-print("\n===== House Details (Linear Regression) =====")
+print("\n===== House Details  =====")
 print(new_data_lr)
 print(f"\nPredicted House Price (Linear Regression): {predicted_price_lr[0]:.2f}")
