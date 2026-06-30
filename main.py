@@ -1,4 +1,5 @@
 import pandas as pd
+import joblib
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score,mean_absolute_error
@@ -6,7 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.ensemble import RandomForestRegressor
 
-df = pd.read_csv('D:/Downloads/House_Prices.csv')
+df = pd.read_csv('House_Prices.csv')
 print("Dataset : ")
 print(df)
 
@@ -22,9 +23,15 @@ print("\nTraining Data Size : ",len(X_train))
 print("\nTesting Data Size : ",len(X_test))
 
 # Linear Regression Model
+# Linear Regression Model
 model = LinearRegression()
-model.fit(X_train,y_train)
+model.fit(X_train, y_train)
+
+# Save the trained model
+joblib.dump(model, "house_price_model.pkl")
+
 print("\nModel Trained Successfully")
+print("Model Saved Successfully as house_price_model.pkl")
 
 y_pred = model.predict(X_test)
 print("\nActual Price : ")
