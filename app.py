@@ -87,7 +87,7 @@ if st.button("Predict House Price"):
 
         prediction = model.predict(new_data)
 
-        st.success(f"Predicted House Price: ${prediction[0]:,.2f}")
+        st.success(f"Predicted House Price: {prediction[0]:,.2f}$")
     st.subheader("House Details")
 
     st.write(f"**SqFt :** {sqft}")
