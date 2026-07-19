@@ -146,11 +146,13 @@ rf_model.fit(X_train, y_train)
 rf_pred = rf_model.predict(X_test)
 
 rf_mae = mean_absolute_error(y_test, rf_pred)
+rf_mse = mean_squared_error(y_test,rf_pred)
 rf_rmse = np.sqrt(mean_squared_error(y_test, rf_pred))
 rf_r2 = r2_score(y_test, rf_pred)
 
 print("\nRandom Forest Results")
 print(f"MAE  : {rf_mae:.2f}")
+print(f"MSE : {rf_mse:.2f}")
 print(f"RMSE : {rf_rmse:.2f}")
 print(f"R2   : {rf_r2:.4f}")
 
@@ -175,11 +177,13 @@ xgb_model.fit(X_train, y_train)
 xgb_pred = xgb_model.predict(X_test)
 
 xgb_mae = mean_absolute_error(y_test, xgb_pred)
+xgb_mse = mean_squared_error(y_test,xgb_pred)
 xgb_rmse = np.sqrt(mean_squared_error(y_test, xgb_pred))
 xgb_r2 = r2_score(y_test, xgb_pred)
 
 print("\nXGBoost Results")
 print(f"MAE  : {xgb_mae:.2f}")
+print(f"MSE : {xgb_mse:.2f}")
 print(f"RMSE : {xgb_rmse:.2f}")
 print(f"R2   : {xgb_r2:.4f}")
 
@@ -237,11 +241,13 @@ history = nn_model.fit(
 nn_pred = nn_model.predict(X_test_scaled).flatten()
 
 nn_mae = mean_absolute_error(y_test, nn_pred)
+nn_mse = mean_squared_error(y_test,nn_pred)
 nn_rmse = np.sqrt(mean_squared_error(y_test, nn_pred))
 nn_r2 = r2_score(y_test, nn_pred)
 
 print("\nDeep Learning Results")
 print(f"MAE  : {nn_mae:.2f}")
+print(f"MSE : {nn_mse:.2f}")
 print(f"RMSE : {nn_rmse:.2f}")
 print(f"R2   : {nn_r2:.4f}")
 
@@ -266,7 +272,11 @@ results = pd.DataFrame({
         nn_mae
 
     ],
-
+    "MSE": [
+        rf_mse,
+        xgb_mse,
+        nn_mse
+    ],
     "RMSE": [
 
         rf_rmse,
